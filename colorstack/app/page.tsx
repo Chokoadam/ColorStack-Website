@@ -1,7 +1,8 @@
 import Image from "next/image";
+import Events from "../components/sections/Events";
 
 export default function Home() {
   return (
-    <h1 className="flex h-screen items-center justify-center">ColorStack is awesome!</h1>
+      <Events />
   );
 }
