@@ -1,7 +1,10 @@
-import Image from "next/image";
+import Sponsor from "../components/sections/Sponsor";
 
 export default function Home() {
   return (
-    <h1 className="flex h-screen items-center justify-center">ColorStack is awesome!</h1>
+    <main>
+
+      <Sponsor />
+    </main>
   );
 }
