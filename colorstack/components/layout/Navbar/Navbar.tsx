@@ -1,8 +1,7 @@
 "use client";
 import {useState, useEffect } from "react";
 import Image from "next/image"
-import "@fontsource/inter"
-import '@/app/globals.css';
+
 export default function Navbar() {
     const linkClass = "text-white hover:text-[#FCB432] transition-colors duration-200";
     const [isScrolled, setisScrolled] = useState(false);
