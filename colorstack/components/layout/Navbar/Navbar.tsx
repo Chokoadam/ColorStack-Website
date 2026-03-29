@@ -29,6 +29,7 @@ export default function Navbar() {
             <Image src="/tamucolorstacklogo.png"width ={50} height = {50}alt="colorstack info"/>
             </a>
             <motion.div 
+            initial={{ maxWidth: 200, opacity: 1, scaleX: 1 }}
             className="flex font-bold text-2xl items-center gap-1 overflow-hidden"
             animate={{
                 scaleX: isScrolled ? 0: 1,
