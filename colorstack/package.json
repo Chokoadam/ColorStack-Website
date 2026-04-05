@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "next": "^16.1.6",
+    "@fontsource/inter": "^5.2.8",
+    "motion": "^12.38.0",
+    "next": "^16.2.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-router-dom": "^7.13.1"
