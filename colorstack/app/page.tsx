@@ -1,7 +1,8 @@
 import Image from "next/image";
+import Officers from "../components/sections/Officers";
 
 export default function Home() {
   return (
-    <h1 className="flex h-screen items-center justify-center">ColorStack is awesome!</h1>
+    <Officers />
   );
 }
