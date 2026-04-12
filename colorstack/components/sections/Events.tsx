@@ -1,4 +1,7 @@
 export default function Events() {
+
+    // event requirements: 
+    // 
     return (
         <div className="w-full h-screen flex flex-col gap-16">
             <h1 className="underline underline-offset-8 text-xl font-inter"> Upcoming Events </h1>
