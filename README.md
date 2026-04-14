@@ -1,2 +1,9 @@
-# ColorStack-Website
-ColorStack Website development, Spring 2026.
+## Getting Started
+
+### Frontend
+- ``` cd into the colorstack folder ```
+- ``` npm install ```
+- ``` npm run dev ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
