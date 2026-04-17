@@ -120,6 +120,17 @@ function DayRow({ day }: { day: WeekDay }) {
           ))
         )}
       </div>
+
+      {firstEvent && !day.isPast && (
+        <div className="flex shrink-0 items-center pr-6">
+          <img
+            src={firstEvent.image}
+            alt=""
+            aria-hidden
+            className="h-[120px] w-[120px] rounded-full object-cover"
+          />
+        </div>
+      )}
     </div>
   );
 }
