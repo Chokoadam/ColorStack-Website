@@ -12,4 +12,14 @@ export type CalendarDisplayEvent = {
   image: string;
   htmlLink?: string;
   startISO?: string;
+  isPast: boolean;
+};
+
+export type WeekDay = {
+  key: string;        // YYYY-MM-DD in America/Chicago
+  label: string;      // "Monday"
+  shortDate: string;  // "Apr 21"
+  isPast: boolean;
+  isToday: boolean;
+  events: CalendarDisplayEvent[];
 };
