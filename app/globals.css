@@ -68,6 +68,9 @@ body {
   scroll-behavior: smooth;
 }
 
+.navbar {
+  height: 100vh;
+}
 @utility animate-scroll {
   display: flex;
   width: max-content;

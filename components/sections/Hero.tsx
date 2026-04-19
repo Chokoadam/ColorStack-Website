@@ -105,7 +105,7 @@ export default function Hero() {
 
       {/* Sponsors Strip */}
       <div
-        className="w-full relative z-50 animate-fade-in-up opacity-0 mt-auto"
+        className="w-full relative z-40 animate-fade-in-up opacity-0 mt-auto"
         style={{ animationDelay: "600ms", animationFillMode: "forwards" }}
       >
         <div className="w-full flex justify-center mb-2">
