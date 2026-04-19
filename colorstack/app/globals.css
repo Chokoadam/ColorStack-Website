@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Nib Pro";
+  src: url("https://cdn.prod.website-files.com/61ae4846c32bb55b23085ccd/620e0708b3cbd85bbd67516d_nib-semibold-pro.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nib Pro";
+  src: url("https://cdn.prod.website-files.com/61ae4846c32bb55b23085ccd/620e07c07f96ec00d0c9016b_nib-semibold-italic-pro.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("https://cdn.prod.website-files.com/61ae4846c32bb55b23085ccd/620e07efa7423439900ea54d_GT-Walsheim-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #500000;
   --foreground: white;
@@ -17,6 +41,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
+}
+
+.font-colorstack-heading {
+  font-family: "Nib Pro", Georgia, serif;
+  font-weight: 600;
+}
+
+.font-colorstack-body {
+  font-family: "GT Walsheim", Arial, sans-serif;
 }
 
 @keyframes float {
@@ -95,4 +128,104 @@ body {
 
 .animation-delay-400 {
   animation-delay: 400ms;
+}
+
+.wm {
+  position: absolute;
+  inset: -20% -10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+  pointer-events: none;
+  transform: rotate(-5deg);
+  opacity: 0.07;
+  overflow: hidden;
+  user-select: none;
+  font-family: "Nib Pro", Georgia, serif;
+  font-size: clamp(1.75rem, 9vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .wm {
+    transform: rotate(-6deg);
+    opacity: 0.06;
+    font-size: clamp(2.25rem, 10vw, 6.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wm {
+    transform: rotate(-7deg);
+    font-size: clamp(2.75rem, 12vw + 1rem, 8.5rem);
+  }
+}
+
+.wm-row {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.wm-track {
+  flex-shrink: 0;
+}
+
+.wm-row img.wm-track {
+  height: 4rem;
+  width: auto;
+  display: block;
+  margin-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .wm-row img.wm-track {
+    height: 8rem;
+    margin-right: 2rem;
+  }
+}
+
+.wm-scroll-left .wm-track {
+  animation: wm-scroll-left 30s linear infinite;
+}
+
+.wm-scroll-right .wm-track {
+  animation: wm-scroll-right 30s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .wm-row:nth-child(even) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wm-scroll-left .wm-track,
+  .wm-scroll-right .wm-track {
+    animation: none;
+  }
+}
+
+@keyframes wm-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes wm-scroll-right {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
