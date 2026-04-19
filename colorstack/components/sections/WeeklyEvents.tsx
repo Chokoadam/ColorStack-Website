@@ -1,7 +1,5 @@
 "use client";
 
-import { CalendarTodayIcon } from "@/components/icons/CalendarTodayIcon";
-import { EventKindIcon } from "@/components/icons/EventKindIcon";
 import type { WeekDay, CalendarDisplayEvent } from "@/lib/calendar-types";
 import Image from "next/image";
 import { useLayoutEffect, useRef, useState, type HTMLAttributes, type ReactNode } from "react";
@@ -11,25 +9,6 @@ const FALLBACK_DESCRIPTION =
 
 const SECTION_INTRO =
   "Join us for weeks filled with Workshops, Hands-on Sessions, Rec Games, and more!";
-
-const COMMUNITY_STRIP_PHOTOS = [
-  {
-    src: "/images/community-strip/01-classroom.png",
-    alt: "TAMU ColorStack members collaborating at a chapter meetup",
-  },
-  {
-    src: "/images/community-strip/02-colorstack-polos.png",
-    alt: "ColorStack members in chapter polos at a workshop",
-  },
-  {
-    src: "/images/community-strip/03-welcome-meeting.png",
-    alt: "TAMU ColorStack group at a welcome meeting",
-  },
-  {
-    src: "/images/community-strip/04-ice-rink.jpg",
-    alt: "TAMU ColorStack members at an ice rink outing",
-  },
-] as const;
 
 /** Reliable scroll reveal (CSS view timelines are inconsistent across browsers). */
 function ScrollReveal({
@@ -181,7 +160,7 @@ function EventBlock({
         muted ? "text-neutral-400" : ""
       }`}
     >
-      <div className="flex flex-row items-start gap-4 sm:gap-6 md:gap-8">
+      <div className="flex w-full min-w-0 flex-row items-start gap-6 sm:gap-7 md:gap-10">
         <div className="min-w-0 flex-1">
           <h3
             className={`font-sans text-xl font-bold leading-tight tracking-tight sm:text-2xl ${
@@ -216,7 +195,25 @@ function EventBlock({
         </div>
 
         <div className="flex shrink-0 flex-col items-end pt-0.5 sm:pt-1">
-          <EventKindIcon title={event.title} muted={muted} isPastDay={isPastDay} />
+          <div
+            className={[
+              "relative h-32 w-32 shrink-0 overflow-hidden rounded-2xl sm:h-40 sm:w-40 md:h-44 md:w-44",
+              muted ? "opacity-70 grayscale" : "",
+              !isPastDay
+                ? "motion-safe:shadow-sm motion-safe:transition-[transform,box-shadow] motion-safe:duration-[600ms] motion-safe:ease-[cubic-bezier(0.25,0.1,0.28,1)] motion-safe:group-hover/day:scale-[1.06] motion-safe:group-hover/day:shadow-md motion-reduce:transition-none motion-reduce:group-hover/day:scale-100"
+                : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            <Image
+              src={event.image}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 176px"
+            />
+          </div>
         </div>
       </div>
     </article>
@@ -227,8 +224,8 @@ function DayCard({ day }: { day: WeekDay }) {
   const stateClasses = day.isPast
     ? "border-neutral-200 bg-neutral-100/90"
     : day.isToday
-      ? "border-gold/35 bg-white shadow-[0_1px_0_rgba(201,162,39,0.12)] ring-1 ring-gold/20"
-      : "border-neutral-200/90 bg-white";
+      ? "border-gold/35 bg-neutral-50/95 shadow-[0_1px_0_rgba(201,162,39,0.12)] ring-1 ring-gold/20"
+      : "border-neutral-200/90 bg-neutral-50/95";
 
   const dateStripClasses = day.isPast
     ? "border-neutral-200 bg-neutral-200/40 text-neutral-500"
@@ -237,7 +234,6 @@ function DayCard({ day }: { day: WeekDay }) {
       : "border-neutral-100 bg-neutral-50/80 text-background";
 
   const interactiveDay = !day.isPast;
-  const emptyTone = day.isPast ? "text-neutral-400" : "text-neutral-500";
 
   return (
     <div
@@ -264,20 +260,9 @@ function DayCard({ day }: { day: WeekDay }) {
         </div>
 
         <div className="flex min-h-[6rem] flex-1 flex-col justify-center px-5 py-4 md:min-h-[7rem] md:px-9 md:py-8">
-          {day.events.length === 0 ? (
-            <div className="flex flex-row items-center gap-4 py-8 sm:gap-6 md:gap-8 md:py-10">
-              <p className={`min-w-0 flex-1 text-center text-base md:text-left ${emptyTone}`}>
-                No events planned.
-              </p>
-              <div className={`flex shrink-0 items-center justify-center ${emptyTone}`}>
-                <CalendarTodayIcon className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16" />
-              </div>
-            </div>
-          ) : (
-            day.events.map((event) => (
-              <EventBlock key={event.id} event={event} isPastDay={day.isPast} dayKey={day.key} />
-            ))
-          )}
+          {day.events.map((event) => (
+            <EventBlock key={event.id} event={event} isPastDay={day.isPast} dayKey={day.key} />
+          ))}
         </div>
       </div>
     </div>
@@ -308,29 +293,6 @@ export function WeeklyEvents({ days, fetchError }: WeeklyEventsProps) {
           <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">{SECTION_INTRO}</p>
         </ScrollReveal>
 
-        <ScrollReveal className="mt-10 w-full max-w-[1100px]">
-          <div
-            className="grid w-full grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4"
-            role="group"
-            aria-label="Chapter community photos"
-          >
-            {COMMUNITY_STRIP_PHOTOS.map((photo) => (
-              <div
-                key={photo.src}
-                className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-white/10"
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-              </div>
-            ))}
-          </div>
-        </ScrollReveal>
-
         {fetchError ? (
           <ScrollReveal
             className="mt-10 rounded-2xl border border-amber-200 bg-amber-50 px-6 py-5 text-sm text-amber-950"
@@ -341,12 +303,14 @@ export function WeeklyEvents({ days, fetchError }: WeeklyEventsProps) {
           </ScrollReveal>
         ) : null}
 
-        <div className="mt-12 flex flex-col gap-5 md:gap-7">
-          {days.map((day) => (
-            <ScrollReveal key={day.key}>
-              <DayCard day={day} />
-            </ScrollReveal>
-          ))}
+        <div className="mt-10 flex flex-col gap-5 md:mt-12 md:gap-7">
+          {days
+            .filter((day) => day.events.length > 0)
+            .map((day) => (
+              <ScrollReveal key={day.key}>
+                <DayCard day={day} />
+              </ScrollReveal>
+            ))}
         </div>
       </div>
     </section>
