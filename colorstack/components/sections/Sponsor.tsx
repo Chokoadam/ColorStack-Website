@@ -21,9 +21,9 @@ export default function Sponsor() {
   // ========================================================================
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     let nextStep = 1;
-    if (latest < 0.15) nextStep = 1;       // 0% - 15%: Slide 1 (Faster!)
-    else if (latest < 0.30) nextStep = 2;  // 15% - 30%: Slide 2 (Faster!)
-    else if (latest < 0.55) nextStep = 3;  // 30% - 55%: Full Screen 1
+    if (latest < 0.15) nextStep = 1;       // 0% - 15%: Slide 1
+    else if (latest < 0.40) nextStep = 2;  // 15% - 40%: Slide 2
+    else if (latest < 0.55) nextStep = 3;  // 40% - 55%: Full Screen 1
     else if (latest < 0.80) nextStep = 4;  // 55% - 80%: Full Screen 2
     else nextStep = 5;                     // 80% - 100%: Full Screen 3
 
