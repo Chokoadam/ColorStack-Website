@@ -37,6 +37,8 @@
     "**/*.mts"
   ],
   "exclude": [
+    "dev/**",
+    ".next/dev/**",
     "node_modules"
   ]
 }
