@@ -35,7 +35,7 @@ export default function Hero() {
       <div className="flex-1 flex flex-col lg:flex-row w-full max-w-[1600px] mx-auto relative z-10">
 
         {/* Left Text Box */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 sm:px-12 lg:px-24 pt-24 lg:pt-0 z-20 text-center">
+        <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 sm:px-12 lg:px-24 xl:px-0 pt-24 lg:pt-0 z-20 text-center">
           <p
             className="text-[#E8A820] text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-4 animate-fade-in-up opacity-0"
             style={{ animationFillMode: "forwards" }}
@@ -44,7 +44,7 @@ export default function Hero() {
           </p>
 
           <h1
-            className={`font-lora text-4xl md:text-5xl lg:text-5xl xl:text-6xl text-white font-medium leading-[1.2] mb-8 animate-fade-in-up opacity-0 drop-shadow-xl`}
+            className={`font-lora text-4xl md:text-5xl lg:text-6xl xl:text-8xl text-white font-medium leading-[1.2] mb-8 animate-fade-in-up opacity-0 drop-shadow-xl`}
             style={{ animationDelay: "150ms", animationFillMode: "forwards" }}
           >
             Helping Black and Latinx Computer Science students get{' '}
