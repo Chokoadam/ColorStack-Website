@@ -31,7 +31,7 @@ function AddIcon(link: string, img_src: string, alt_text: string, key?: number) 
 
 export default function Footer() {
   return (
-    <div className="flex flex-col w-full h-fit items-center font-poppins">
+    <div className="flex flex-col w-full h-fit items-center font-poppins py-10">
       <h1 className="flex justify-center pb-[10px] underline text-underline-offset-[50px] decoration-[#ebbd34] font-bold">
         Connect with us!
       </h1>
