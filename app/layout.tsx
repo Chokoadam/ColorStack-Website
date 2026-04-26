@@ -1,20 +1,30 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Poppins, Inter, Lora } from 'next/font/google';
+import './globals.css';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const lora = Lora({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-lora'
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-poppins',
 });
 
 export const metadata: Metadata = {
-  title: "ColorStack at Texas A&M", // <-- Updated from "Create Next App"
-  description: "Sponsor the next generation of diverse tech leaders.",
+  title: 'ColorStack at Texas A&M',
+  description: 'Sponsor the next generation of diverse tech leaders.',
 };
 
 export default function RootLayout({
@@ -23,11 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        suppressHydrationWarning
-      >
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
+      <body className={`${lora.variable} ${inter.variable} ${poppins.variable} antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>
